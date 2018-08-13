@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <title></title>
+    <link rel="" href="">
+    <link rel="stylesheet" href="">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width: 600px;
+            height: 300px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            overflow: scroll;
+        }
+        ul li {
+            width: 1419px;
+            height: 300px;
+            float: left;
+        }
+        ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        
+    </style>
+    <script src="../myUtils.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul class="ul-box">
+            <li>
+                <img src="images/night.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var box=document.getElementsByClassName('box')[0];
+    var ul_box=document.getElementsByClassName('ul-box')[0];
+    var li=ul_box.getElementsByTagName('li')[0];
+    var liW=myUtils.getCss(li,'width');
+    myUtils.setCss(ul_box,'width',2*liW);
+    ul_box.innerHTML+=ul_box.innerHTML;
+   /* var timer=setInterval(function(){
+        var scrW=box.scrollLeft++;
+        if(scrW==box.scrollLeft){
+            box.scrollLeft=0;
+        }
+    },20)*/
+
+    var maxL=box.scrollWidth-box.clientWidth;//能卷去的最大宽度
+    var timer=setInterval(function(){
+     box.scrollLeft++;
+     if(Math.ceil(box.scrollLeft)>=maxL){
+     box.scrollLeft=0;
+     }
+     },10)
+
+
+
+</script>
+</html>
